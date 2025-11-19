@@ -1,0 +1,386 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --bg-color: #0a0a0a;
+    --card-bg: #141414;
+    --text-main: #ffffff;
+    --text-muted: #a1a1a1;
+    --border: #333333;
+    --accent: #ffffff;
+    --font-main: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- LAYOUT TYPOGRAPHY --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    display: inline-block;
+    background: linear-gradient(to right, #fff, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+/* --- HEADER / NAV --- */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+    padding: 1.2rem 0;
+}
+
+.nav-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to bottom right, #fff 30%, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+}
+
+/* --- BOUTONS --- */
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 14px 28px;
+    font-weight: 600;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--text-main);
+    color: var(--bg-color);
+    border: 1px solid var(--text-main);
+}
+
+.btn.primary:hover {
+    background: transparent;
+    color: var(--text-main);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.btn.secondary:hover {
+    border-color: var(--text-main);
+}
+
+/* --- SKILLS (SÉPARATION DES LANGAGES) --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: #555;
+}
+
+.skill-card h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+/* --- SKILLS (BARRES DE PROGRESSION) --- */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Espace entre chaque barre */
+}
+
+.skill-bar-item {
+    width: 100%;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.percent {
+    color: var(--text-main);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Le fond de la barre (le rail gris) */
+.bar-track {
+    width: 100%;
+    height: 6px;
+    background-color: #222; /* Gris très sombre */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* La partie remplie (blanche) */
+.bar-fill {
+    height: 100%;
+    background-color: var(--text-main); /* Blanc */
+    border-radius: 10px;
+    transform: scaleX(0); /* Par défaut à 0 pour l'animation */
+    transform-origin: left;
+    transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1); /* Animation fluide */
+}
+
+/* Animation : La barre se remplit quand la section devient visible */
+.reveal.active .bar-fill {
+    transform: scaleX(1); /* La barre va jusqu'à la largeur définie dans le HTML */
+}
+
+/* Effet hover sur la carte : la barre devient légèrement plus brillante */
+.skill-card:hover .bar-fill {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* --- PROJETS --- */
+/* --- PROJETS (MIS À JOUR AVEC IMAGES) --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* Cartes un peu plus larges */
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    /* Important pour empêcher l'image de dépasser */
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    /* Enlève le soulignement du lien */
+}
+
+.project-card:hover {
+    border-color: var(--text-muted);
+    transform: translateY(-5px);
+    /* La carte remonte légèrement */
+}
+
+/* Conteneur de l'image */
+.card-image {
+    width: 100%;
+    height: 220px;
+    /* Hauteur fixe pour uniformiser */
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+/* L'image elle-même */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Remplit le cadre sans déformer l'image */
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Effet de zoom au survol */
+.project-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-content h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    color: var(--text-main);
+}
+
+/* Ajustement du texte pour la lisibilité */
+.project-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- CONTACT & FOOTER --- */
+.contact-box {
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-color) 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.contact-box h2 {
+    background: none;
+    -webkit-text-fill-color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.contact-box p {
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    color: #555;
+    border-top: 1px solid var(--border);
+    margin-top: 6rem;
+    font-size: 0.85rem;
+}
+
+/* --- ANIMATIONS --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+}
