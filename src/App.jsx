@@ -29,6 +29,14 @@ const projects = [
     tags: ["React", "News", "Culture"],
     link: "https://gwendalproust4-design.github.io/bureau-du-rap-v2/",
     image: "https://image.thum.io/get/width/800/crop/600/noanimate/https://gwendalproust4-design.github.io/bureau-du-rap-v2/"
+  },
+  {
+    title: "L'Atelier de la Boire",
+    category: "Restauration & Commerce",
+    description: "Site vitrine pour un bistrot-brocante. Intégration de menus locaux et d'un outil de réservation en ligne.",
+    tags: ["Wix", "Branding", "UI/UX"],
+    link: "https://www.latelierdelaboire.fr/bistrot",
+    image: "https://image.thum.io/get/width/800/crop/600/noanimate/https://www.latelierdelaboire.fr/bistrot"
   }
 ];
 
